@@ -9,14 +9,14 @@ def is_valid_move(grid, row, column, value):
     return False
   
   for i in range(9):
-    if value in grid[i][column]:
+    if grid[i][column] == value:
       return False
 
   starting_row = (row // 3) * 3
-  sarting_column = (column // 3) * 3
+  starting_column = (column // 3) * 3
 
   for i in range(starting_row, starting_row + 3):
-    for j in range(sarting_column, sarting_column + 3):
+    for j in range(starting_column, starting_column + 3):
       if grid[i][j] == value:
         return False
   
@@ -26,7 +26,7 @@ def check_win(grid):
   for i in range(9):
     for j in range(9):
       value = grid[i][j]
-      if value == 0 or not is_valid_move(grid, j, j, value):
+      if value == 0 or not is_valid_move(grid, i, j, value):
         return False
 
   return True
